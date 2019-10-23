@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body {background-color: powderblue;font-family: courier;font-size: 100%;}
+
+</style>
+</head>
+<body>
+
+<div>
+    <form method="GET" enctype="multipart/form-data" action="/sendsms">
+        <table>
+            <tr><td>PhoneNumbers:<input id="phonesList" name="phonesList" type="text" th:value="${today}"></td><td><button type="submit" formaction="/fetchno">Fetch</button></td>
+                <td><button type="button" onclick="document.getElementById('phonesList').value = ''">Clear!</button></td>
+            <tr><td>Line:<select name="line" th:value=${line}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+
+            </select></td></tr>
+
+            <tr><td><textarea rows = "5" cols = "50" name = "message"></textarea></td></tr>
+            <tr><td><input type="submit" value="Send" /></td></tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

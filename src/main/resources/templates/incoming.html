@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Ημερομηνίες αναζήτησης SMS:</p>
+
+<form action="/querysms">
+    Από:<br>
+    <input type="date" name="fromDate" th:value="${fromDate}" min="2017/04/01"><br><br>
+    Έως:<br>
+    <input type="date" name="toDate" th:value="${toDate}"><br><br>
+    <input type="submit">
+</form>
+
+<div th:if="${not #lists.isEmpty(smslist)}">
+
+
+    <h2>Counts List</h2>
+    <table class="table table-striped"  border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="sms : ${smslist}">
+            <td th:text="${sms.dateReceived}"></td>
+            <td th:text="${sms.fromsender}"></td>
+            <td th:text="${sms.message}"></td>
+            <td th:text="${sms.PDUMessage}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
